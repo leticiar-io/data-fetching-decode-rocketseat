@@ -1,5 +1,6 @@
+import { Box, Button, Container, Heading,Text } from "@chakra-ui/react";
 import { useQueryClient } from "react-query";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Repository } from "./Repos";
 
 export function Repo() {
@@ -25,11 +26,19 @@ export function Repo() {
   }
 
   return (
-    <div>
-      <h1>{currentRepository}</h1>
-      <button onClick={handleChangeRepositoryDescription}>
+    <Container centerContent pt={["5rem","9rem"]} >
+      <Box p={10} maxW="sm" borderWidth="1px" w={["","30rem"]} height={"30rem"} borderColor="#57616C" borderRadius="lg" bg="#1C2128">
+      <Button variant='outline' _hover={{ bg: "#22272E" }} size="sm" mb={6}>
+        <Link to="/">Voltar</Link>
+      </Button>
+      
+      <Heading size="md">Título do repositório: </Heading>
+      <Text size="sm" mb={5}>{currentRepository}</Text>
+
+      <Button variant='outline' _hover={{ bg: "#22272E" }} onClick={handleChangeRepositoryDescription}>
         Alterar descrição
-      </button>
-    </div>
+      </Button>
+      </Box>
+    </Container>
   );
 }
